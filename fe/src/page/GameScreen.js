@@ -15,7 +15,7 @@ const GameScreen = () => {
   const userList = useSelector((state) => state.users.users);
 
   const total = [
-    ...Object.values(questionApi[indexQuestion].incorrect_answers, userList),
+    ...Object.values(questionApi[indexQuestion].incorrect_answers),
     questionApi[indexQuestion].correct_answer,
   ];
 
@@ -47,7 +47,7 @@ const GameScreen = () => {
     dispatch(
       dataAnswer({
         namePlayer: player,
-        answerPlayer: answers,
+        answerPlayer: answers === null ? 'Không chọn' : answers,
         answerApi: questionApi[indexQuestion].correct_answer,
       })
     );
@@ -88,36 +88,6 @@ const GameScreen = () => {
             {time}
           </Button>{' '}
         </div>
-        <div className="player">
-          <h2>
-            <span class="badge bg-secondary">Player : {player}</span>
-          </h2>{' '}
-        </div>
-        <div className="player">
-          {' '}
-          <h4>
-            <span class="badge bg-secondary">Question : {question}</span>
-          </h4>{' '}
-        </div>
-        <div className="css-question">
-          {total.map((e, i) => (
-            <div key={i} className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                id="flexRadioDefault1"
-                value={e}
-                onChange={(e) => {
-                  setAnswers(e.target.value);
-                }}
-              />
-              <label className="form-check-label fs-3" for="flexRadioDefault1">
-                {e}
-              </label>
-            </div>
-          ))}
-        </div>
         {isLastPlayer ? (
           <Button
             variant="secondary"
@@ -129,6 +99,41 @@ const GameScreen = () => {
           </Button>
         ) : (
           <>
+            <div className="player">
+              <h2>
+                <span class="badge bg-secondary">Player : {player}</span>
+              </h2>{' '}
+            </div>
+            <div className="player">
+              {' '}
+              <h4>
+                <span class="badge bg-secondary">
+                  Question {indexQuestion + 1} : {question}
+                </span>
+              </h4>{' '}
+            </div>
+            <div className="css-question">
+              {total.map((e, i) => (
+                <div key={i} className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                    value={e}
+                    onChange={(e) => {
+                      setAnswers(e.target.value);
+                    }}
+                  />
+                  <label
+                    className="form-check-label fs-3"
+                    for="flexRadioDefault1"
+                  >
+                    {e}
+                  </label>
+                </div>
+              ))}
+            </div>
             {!isLoading ? (
               <Button
                 variant="primary"

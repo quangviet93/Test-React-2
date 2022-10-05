@@ -23,52 +23,19 @@ function ModalCustom(props) {
         navigate('/game-screen');
       });
       props.handleCloseReply();
-      // navigate('/game-screen');
     }
-    // if (namePlayer) {
-    //   if (props.name === "Add" || props.name === "Add Player") {
-    //     dispatch(
-    //       addUser({
-    //         id:
-    //           userList.length === 0 ? 1 : userList[userList.length - 1].id + 1,
-    //         name: namePlayer,
-    //       })
-    //     );
-    //     if (props.name === "Add Player") {
-    //       navigate("/ListPlayer");
-    //     }
-    //     props.handleCloseReply();
-    //   }
-    //   return;
-    // }
-    // if (limitMatch) {
-    //   if (props.name === "Match") {
-    //     dispatch(
-    //       addMatch({
-    //         limitMatch: limitMatch,
-    //       })
-    //     );
-    //     props.handleCloseReply();
-    //     navigate("/GameManagement");
-    //   }
-    //   return;
-    // }
   };
+
   return (
     <>
       <Modal show={props.props} onHide={props.handleCloseReply}>
         <Modal.Header closeButton>
-          <Modal.Title>
-            Create Game
-            {/* {props.name === "Add" && "Add New Player"}
-            {props.name === "Add Player" && "Add New Player"}
-            {props.name === "Match" && "Limit Match"} */}
-          </Modal.Title>
+          <Modal.Title>Create Game</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <InputGroup size="lg">
             <InputGroup.Text id="inputGroup-sizing-lg">
-              Add Name Player 1{/* {props.name} */}
+              Add Name Player 1
             </InputGroup.Text>
             <Form.Control
               onChange={(e) => {
@@ -80,7 +47,7 @@ function ModalCustom(props) {
           </InputGroup>
           <InputGroup size="lg">
             <InputGroup.Text id="inputGroup-sizing-lg">
-              Add Name Player 2{/* {props.name} */}
+              Add Name Player 2
             </InputGroup.Text>
             <Form.Control
               onChange={(e) => {
@@ -99,14 +66,14 @@ function ModalCustom(props) {
         </Modal.Body>
         <Modal.Footer>
           <Button
-            variant="secondary"
+            variant="success"
             onClick={() => {
               handleSubmit();
             }}
           >
             Add
           </Button>
-          <Button variant="primary" onClick={props.handleCloseReply}>
+          <Button variant="dark" onClick={props.handleCloseReply}>
             Cancel
           </Button>
         </Modal.Footer>

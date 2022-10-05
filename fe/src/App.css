@@ -50,6 +50,9 @@
   justify-content: center;
   align-items: center;
 }
+.screenGameManagement {
+  padding: 40px;
+}
 .form-check {
   display: flex !important;
   justify-content: flex-start !important;

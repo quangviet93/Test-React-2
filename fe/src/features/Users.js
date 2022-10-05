@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const fetchData = createAsyncThunk('fetchData', async () => {
   const response = await axios(
-    'https://opentdb.com/api.php?amount=2&type=multiple'
+    'https://opentdb.com/api.php?amount=3&type=multiple'
   );
   return response.data.results;
 });

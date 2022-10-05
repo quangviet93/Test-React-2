@@ -14,7 +14,6 @@ function History() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const answers = useSelector((state) => state.users.answer);
   const answers = useSelector((state) => state.users.answer);
   const point = Object.keys(answers).map((e) => {
     return answers[e].score;
@@ -49,6 +48,7 @@ function History() {
       answerPlayer: e.answerPlayer.join(' | '),
     };
   });
+
   const columns = [
     {
       dataField: 'namePlayer',
@@ -129,11 +129,6 @@ function History() {
       <h2 className="titleWinner">
         The Winner is :<span class="badge bg-secondary">{winner[0]}</span>
       </h2>
-      <div className="buttonEndGame">
-        <Button variant="secondary" onClick={() => {}}>
-          End Game
-        </Button>
-      </div>
     </div>
   );
 }
